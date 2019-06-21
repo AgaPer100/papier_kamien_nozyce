@@ -21,32 +21,32 @@ function play(e) {
 function getComputerChoice() {
     const rand = Math.random();
     if (rand < 0.34) {
-        return 'kamień';
+        return 'rock';
     } else if (rand <= 0.67) {
-        return 'papier';
+        return 'paper';
     } else {
-        return 'nożyce';
+        return 'scissors';
     }
 }
 
 //Get game winner
 function getWinner(p, c) {
     if (p === c) {
-        return 'remis';
-    } else if (p === 'kamień') {
-        if (c === 'papier') {
+        return 'draw';
+    } else if (p === 'rock') {
+        if (c === 'paper') {
             return 'computer';
         } else {
             return 'player';
         }
-    } else if (p === 'papier') {
-        if (c === 'nożyce') {
+    } else if (p === 'paper') {
+        if (c === 'scissors') {
             return 'computer';
         } else {
             return 'player';
         }
-    } else if (p === 'nożyce') {
-        if (c === 'kamień') {
+    } else if (p === 'scissors') {
+        if (c === 'rock') {
             return 'computer';
         } else {
             return 'player';
@@ -60,31 +60,31 @@ function showWinner(winner, computerChoice) {
         scoreboard.player++;
         // Show modal result
         result.innerHTML = `
-        <h1 class="text-win">Wygrałeś!</h1>
+        <h1 class="text-win">You win!</h1>
         <i class="fas fa-hand-${computerChoice} fa-10x"></i>
-        <p>Wybór komputera <strong>${computerChoice}</strong></p>
+        <p>Computer choice <strong>${computerChoice}</strong></p>
         `;
     } else if (winner === 'computer') {
         //Inc player score
         scoreboard.computer++;
         // Show modal result
         result.innerHTML = `
-        <h1 class="text-lose">Przegrałeś</h1>
+        <h1 class="text-lose">You lose</h1>
         <i class="fas fa-hand-${computerChoice} fa-10x"></i>
-        <p>Wybór komputera <strong>${computerChoice}</strong></p>
+        <p>Computer choice <strong>${computerChoice}</strong></p>
         `;
     } else {
         result.innerHTML = `
-        <h1>Remis</h1>
+        <h1>Draw</h1>
         <i class="fas fa-hand-${computerChoice} fa-10x"></i>
-        <p>Wybór komputera <strong>${computerChoice}</strong></p>
+        <p>Computer choice <strong>${computerChoice}</strong></p>
         `;
     }
 
     //Show score
     score.innerHTML = `
-        <p>Gracz: ${scoreboard.player}</p>
-        <p>Komputer: ${scoreboard.computer}</p>
+        <p>Player: ${scoreboard.player}</p>
+        <p>Computer: ${scoreboard.computer}</p>
         `;
 
     modal.style.display = 'block';
@@ -95,8 +95,8 @@ function restartGame() {
     scoreboard.player = 0;
     scoreboard.computer = 0;
     score.innerHTML = `
-    <p>Gracz: 0</p>
-    <p>Komputer: 0</p>
+    <p>Player: 0</p>
+    <p>Computer: 0</p>
     `;
 }
 
